@@ -1,47 +1,46 @@
-import { Payload } from './Payload';
-import { Astronaut } from './Astronaut';
-import { Cargo } from './Cargo';
-
-export class Rocket {
-    name: string;
-    totalCapacityKg: number;
-    cargoItems: Cargo[];
-    astronauts: Astronaut[];
-    constructor(name: string, totalCapacityKg: number) {
+"use strict";
+exports.__esModule = true;
+var Rocket = /** @class */ (function () {
+    function Rocket(name, totalCapacityKg) {
         this.name = name;
         this.totalCapacityKg = totalCapacityKg;
     }
-    sumMass (items: Payload[]): number {
-        let sumTotal: number = 0;
-        for (let item in items) {
+    Rocket.prototype.sumMass = function (items) {
+        var sumTotal = 0;
+        for (var item in items) {
             sumTotal += items[item].massKg;
         }
         return sumTotal;
-    }
-    currentMassKg (): number {
+    };
+    Rocket.prototype.currentMassKg = function () {
         return this.sumMass(this.astronauts) + this.sumMass(this.cargoItems);
-    }
-    canAdd (item: Payload): boolean {
+    };
+    Rocket.prototype.canAdd = function (item) {
         if ((this.currentMassKg() + item.massKg) <= this.totalCapacityKg) {
             return true;
-        } else {
+        }
+        else {
             return false;
         }
-    }
-    addCargo (cargo: Cargo) {
+    };
+    Rocket.prototype.addCargo = function (cargo) {
         if (this.canAdd) {
             this.cargoItems.push(cargo);
             return true;
-        } else {
+        }
+        else {
             return false;
         }
-    }
-    addAstronaut(astronaut: Astronaut) {
+    };
+    Rocket.prototype.addAstronaut = function (astronaut) {
         if (this.canAdd) {
             this.astronauts.push(astronaut);
             return true;
-        } else {
+        }
+        else {
             return false;
         }
-    }
-}
+    };
+    return Rocket;
+}());
+exports.Rocket = Rocket;
