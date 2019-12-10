@@ -4,3 +4,7 @@
 // TODO: 
 // * Code the Astronaut, Cargo, and Rocket classes in new files.
 // * Import the three classes into this file.
+
+import { Astronaut } from './Astronaut.ts';
+import { Cargo } from './Cargo.ts';
+import { Rocket } from './Rocket.ts';
